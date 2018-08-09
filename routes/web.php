@@ -15,10 +15,10 @@ Route::get('logout', 'Auth\LoginController@logout');
 | Admin
 |------------------------------------------------------------------------------------
 */
+    Route::resource('kajian', 'KajianController');
 Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth']], function() {
     Route::get('/', ['uses'=>'DashboardController@index', 'as'=>'dash']);
     Route::resource('categories', 'CategoriesController');
-    Route::resource('kajian', 'KajianController');
     Route::resource('direktori', 'DirektoriController');
     Route::resource('quotes', 'QuotesController');
     Route::resource('event', 'EventController');

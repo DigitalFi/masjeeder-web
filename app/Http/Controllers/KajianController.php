@@ -20,8 +20,17 @@ public function index()
 {
 
     $kajian = Kajian::all();
-    return view('admin.kajian.index',compact('kajian'));
-    	return Response::json($comments,200);
+    //return view('admin.kajian.index',compact('kajian'));
+    	//return Response::json($comments,200);
+    if(count($kajian) > 0){ //mengecek apakah data kosong atau tidak
+        $res['message'] = "Success!";
+        $res['values'] = $kajian;
+        return response($res);
+    }
+    else{
+        $res['message'] = "Empty!";
+        return response($res);
+    }
 }
 
 
